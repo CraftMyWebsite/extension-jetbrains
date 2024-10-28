@@ -1,0 +1,68 @@
+<idea-plugin>
+    <id>fr.craftmywebsite.extension</id>
+    <name>CraftMyWebsite - IDE Extension</name>
+    <version>1.0.0</version>
+
+
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <description>
+        <![CDATA[
+      <h2>CraftMyWebsite - IDE Extension</h2>
+      <p>CrafyMyWebite framework extension support.</p>
+
+        <h3>Features:</h3>
+            <ul>
+            <li>Create Themes</li>
+            <li>Create Packages</li>
+            <li>Create Managers</li>
+            <li>Shortcuts</li>
+            <li>And more soon...</li>
+        </ul>
+
+        <h3>Documentation:</h3>
+        <span>Soon...</span>
+
+        <h3>Support:</h3>
+        <a href="https://craftmywebsite.fr/discord">CraftMyWebsite Discord</a>
+
+        <h3>Contribute:</h3>
+        <span>Soon...</span>
+    ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+      <ul>
+        <li><b>1.0.0</b> Release CraftMyWebsite IDE Extension</li>
+      </ul>
+    ]]>
+    </change-notes>
+
+    <vendor url="https://craftmywebsite.fr">CraftMyWebsite</vendor>
+
+    <actions>
+        <group id="fr.craftmywebsite.actions.dialogs.CustomFileGroup"
+               text="CraftMyWebsite"
+               icon="/icons/toolWindow.svg"
+               description="Create different files for CraftMyWebsite"
+               popup="true">
+
+            <add-to-group group-id="NewGroup" anchor="first"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.ControllerDialog"
+                    class="fr.craftmywebsite.actions.dialogs.ControllerDialog"
+                    text="Create Controller"
+                    description="Creates a new Controller file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.ModelDialog"
+                    class="fr.craftmywebsite.actions.dialogs.ModelDialog"
+                    text="Create Model"
+                    description="Creates a new Model file"/>
+
+
+        </group>
+    </actions>
+
+
+</idea-plugin>

@@ -1,0 +1,21 @@
+<?php
+
+namespace ${namespace};
+
+use CMW\Manager\Database\DatabaseManager;
+use CMW\Manager\Package\AbstractModel;
+
+/**
+ * Class: @${modelName}Model
+ * @package ${packageName}
+ */
+class ${modelName}Model extends AbstractModel
+{
+    public function doSomething(): void
+    {
+        $sql = "SELECT * FROM table";
+        $db = DatabaseManager::getInstance();
+
+        $res = $db->query($sql);
+    }
+}

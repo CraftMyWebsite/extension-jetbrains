@@ -1,0 +1,19 @@
+<?php
+
+namespace ${namespace};
+
+use CMW\Manager\Package\AbstractController;
+use CMW\Manager\Router\Link;
+
+/**
+ * Class: @${controllerName}Controller
+ * @package ${packageName}
+ */
+class ${controllerName}Controller extends AbstractController
+{
+    #[Link("/${packageNameLower}", Link::GET)]
+    private function defaultRoute(): void
+    {
+        //TODO
+    }
+}
