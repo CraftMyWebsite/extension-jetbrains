@@ -1,0 +1,16 @@
+<?php
+
+namespace ${namespace};
+
+use ${interfaceNamespace};
+
+/**
+ * Class: @${implementationName}
+ * @implements: ${interfaceName}
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/implementations
+ */
+class ${implementationName} implements ${interfaceName}
+{
+    //TODO Implement interface methods
+}

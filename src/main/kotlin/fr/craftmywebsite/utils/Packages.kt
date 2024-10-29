@@ -1,6 +1,11 @@
 package fr.craftmywebsite.utils
 
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.project.guessProjectDir
+import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.vfs.findDirectory
 import com.intellij.psi.PsiDirectory
+import com.intellij.psi.PsiManager
 import fr.craftmywebsite.types.PackageTypes
 
 object Packages {
@@ -13,6 +18,23 @@ object Packages {
             currentDirectory = currentDirectory.parent ?: break
         }
         throw IllegalArgumentException("Unable to find 'Package' folder.")
+    }
+
+    fun findPackageDirectory(name: String, project: Project): PsiDirectory? {
+        val virtualFile = project.guessProjectDir()?.findDirectory("App/Package/$name")
+            ?: return null
+
+        return PsiManager.getInstance(project).findDirectory(virtualFile)
+    }
+
+    fun findPackageDirectory(virtualFile: VirtualFile, project: Project): PsiDirectory? {
+        var currentDirectory = virtualFile.parent
+
+        while (currentDirectory.name != "Interfaces" && currentDirectory.parent != null) {
+            currentDirectory = currentDirectory.parent ?: break
+        }
+
+        return PsiManager.getInstance(project).findDirectory(currentDirectory)
     }
 
     fun buildNamespace(directory: PsiDirectory, type: PackageTypes): String {

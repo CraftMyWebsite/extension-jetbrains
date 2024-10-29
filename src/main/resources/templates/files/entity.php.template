@@ -1,0 +1,31 @@
+<?php
+
+namespace ${namespace};
+
+use CMW\Manager\Package\AbstractEntity;
+
+/**
+ * Class: @${entityName}
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/entities
+ */
+class ${entityName} extends AbstractEntity
+{
+   private int $id;
+
+   /**
+    * @param int $id
+    */
+   public function __construct(int $id)
+   {
+      $this->id = $id;
+   }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+}

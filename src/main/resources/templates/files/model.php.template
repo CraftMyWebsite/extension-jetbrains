@@ -6,10 +6,11 @@ use CMW\Manager\Database\DatabaseManager;
 use CMW\Manager\Package\AbstractModel;
 
 /**
- * Class: @${modelName}Model
+ * Class: @${modelName}
  * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/models
  */
-class ${modelName}Model extends AbstractModel
+class ${modelName} extends AbstractModel
 {
     public function doSomething(): void
     {

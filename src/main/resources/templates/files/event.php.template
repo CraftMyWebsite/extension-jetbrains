@@ -1,0 +1,18 @@
+<?php
+
+namespace ${namespace};
+
+use CMW\Manager\Events\AbstractEvent;
+
+/**
+ * Class: @${eventName}
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/events
+ */
+class ${eventName} extends AbstractEvent
+{
+    public function getName(): string
+    {
+        return '${eventName}-${packageName}-CraftMyWebsite';
+    }
+}

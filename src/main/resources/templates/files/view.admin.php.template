@@ -1,0 +1,9 @@
+<?php
+
+use CMW\Utils\Website;
+
+Website::setTitle("${packageName}");
+Website::setDescription("TODO: Add description");
+?>
+
+<h3><i class="fa-solid fa-box"></i> ${packageName}</h3>

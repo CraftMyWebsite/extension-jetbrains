@@ -6,10 +6,11 @@ use CMW\Manager\Package\AbstractController;
 use CMW\Manager\Router\Link;
 
 /**
- * Class: @${controllerName}Controller
+ * Class: @${controllerName}
  * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/controllers
  */
-class ${controllerName}Controller extends AbstractController
+class ${controllerName} extends AbstractController
 {
     #[Link("/${packageNameLower}", Link::GET)]
     private function defaultRoute(): void

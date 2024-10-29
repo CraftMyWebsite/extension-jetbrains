@@ -1,4 +1,4 @@
-package fr.craftmywebsite.actions.dialogs
+package fr.craftmywebsite.actions.dialogs.packages.files
 
 import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
@@ -21,12 +21,14 @@ class ModelDialog : AnAction() {
         val view = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE) ?: return
         val psiDirectory = PsiManager.getInstance(project).findDirectory(view) ?: return
 
-        val fileName = Messages.showInputDialog(
+        var fileName = Messages.showInputDialog(
             project,
             "Enter the model name:",
             "New Model",
             Messages.getQuestionIcon()
         )?.capitalize() ?: return
+
+        fileName = if (fileName.endsWith("Model")) fileName else "${fileName}Model"
 
         val packageName = Packages.findPackageName(psiDirectory)
         val namespace = Packages.buildNamespace(psiDirectory, PackageTypes.MODEL)
@@ -36,12 +38,12 @@ class ModelDialog : AnAction() {
             .replace("\${namespace}", namespace)
             .replace("\${packageName}", packageName)
 
-        Files.createFile(psiDirectory, "${fileName}Model.php", templateContent)
+        Files.createFile(psiDirectory, "${fileName}.php", templateContent)
     }
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = virtualFile != null && virtualFile.isDirectory
+        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.MODEL)
         event.presentation.icon = ExtensionIcons.action
     }
 

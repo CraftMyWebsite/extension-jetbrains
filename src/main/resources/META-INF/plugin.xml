@@ -50,16 +50,51 @@
 
             <add-to-group group-id="NewGroup" anchor="first"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.ControllerDialog"
-                    class="fr.craftmywebsite.actions.dialogs.ControllerDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ControllerDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.ControllerDialog"
                     text="Create Controller"
                     description="Creates a new Controller file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.ModelDialog"
-                    class="fr.craftmywebsite.actions.dialogs.ModelDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ModelDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.ModelDialog"
                     text="Create Model"
                     description="Creates a new Model file"/>
 
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.EntityDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.EntityDialog"
+                    text="Create Entity"
+                    description="Creates a new Entity file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.AdminViewDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.AdminViewDialog"
+                    text="Create Admin View"
+                    description="Creates a new Admin View file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.EventDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.EventDialog"
+                    text="Create Event"
+                    description="Creates a new Event file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.TypeDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.TypeDialog"
+                    text="Create Type"
+                    description="Creates a new Type file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.InterfaceDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.InterfaceDialog"
+                    text="Create Interface"
+                    description="Creates a new Interface file"/>
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ExceptionDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.ExceptionDialog"
+                    text="Create Exception"
+                    description="Creates a new Exception file"/>
+
+
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ImplementationDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.ImplementationDialog"
+                    text="Create Implementation"
+                    description="Creates a new Implementation based on interface"/>
 
         </group>
     </actions>

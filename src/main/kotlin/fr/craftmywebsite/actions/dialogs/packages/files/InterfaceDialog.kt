@@ -1,4 +1,4 @@
-package fr.craftmywebsite.actions.dialogs
+package fr.craftmywebsite.actions.dialogs.packages.files
 
 import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
@@ -12,7 +12,8 @@ import fr.craftmywebsite.utils.Files
 import fr.craftmywebsite.utils.Packages
 import fr.craftmywebsite.utils.Templates
 
-class ControllerDialog : AnAction() {
+
+class InterfaceDialog : AnAction() {
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
@@ -21,28 +22,29 @@ class ControllerDialog : AnAction() {
         val view = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE) ?: return
         val psiDirectory = PsiManager.getInstance(project).findDirectory(view) ?: return
 
-        val fileName = Messages.showInputDialog(
+        var fileName = Messages.showInputDialog(
             project,
-            "Enter the controller name:",
-            "New Controller",
+            "Enter the interface name:",
+            "New Interface",
             Messages.getQuestionIcon()
         )?.capitalize() ?: return
 
-        val packageName = Packages.findPackageName(psiDirectory)
-        val namespace = Packages.buildNamespace(psiDirectory, PackageTypes.CONTROLLER)
+        fileName = if (fileName.startsWith("I")) fileName else "I$fileName"
 
-        val templateContent = Templates.getTemplateFile("/templates/files/controller.php.template")
-            .replace("\${controllerName}", fileName)
+        val packageName = Packages.findPackageName(psiDirectory)
+        val namespace = Packages.buildNamespace(psiDirectory, PackageTypes.INTERFACE)
+
+        val templateContent = Templates.getTemplateFile("/templates/files/interface.php.template")
+            .replace("\${interfaceName}", fileName)
             .replace("\${namespace}", namespace)
             .replace("\${packageName}", packageName)
-            .replace("\${packageNameLower}", packageName.lowercase())
 
-        Files.createFile(psiDirectory, "${fileName}Controller.php", templateContent)
+        Files.createFile(psiDirectory, "${fileName}.php", templateContent)
     }
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = virtualFile != null && virtualFile.isDirectory
+        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.INTERFACE)
         event.presentation.icon = ExtensionIcons.action
     }
 

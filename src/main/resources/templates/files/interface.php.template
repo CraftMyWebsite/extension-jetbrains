@@ -1,0 +1,17 @@
+<?php
+
+namespace ${namespace};
+
+/**
+ * Interface: @${interfaceName}
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/interfaces
+ */
+interface ${interfaceName}
+{
+    /**
+     * @return string
+     * @desc Example method
+     */
+    public function getName(): string;
+}
