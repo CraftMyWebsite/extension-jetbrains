@@ -1,4 +1,4 @@
-package fr.craftmywebsite.actions.dialogs.packages.files
+package fr.craftmywebsite.actions.dialogs.packages.files.controller
 
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
@@ -8,10 +8,8 @@ import com.intellij.psi.PsiManager
 import fr.craftmywebsite.icons.ExtensionIcons
 import fr.craftmywebsite.types.PackageTypes
 import fr.craftmywebsite.utils.Files
-import fr.craftmywebsite.utils.Packages
-import fr.craftmywebsite.utils.Templates
 
-class AdminViewDialog : AnAction() {
+class ControllerDialog : AnAction() {
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
@@ -22,22 +20,18 @@ class AdminViewDialog : AnAction() {
 
         val fileName = Messages.showInputDialog(
             project,
-            "Enter the admin view name:",
-            "New Admin View",
+            "Enter the controller name:",
+            "New Controller",
             Messages.getQuestionIcon()
         ) ?: return
 
-        val packageName = Packages.findPackageName(psiDirectory)
-
-        val templateContent = Templates.getTemplateFile("/templates/files/view.admin.php.template")
-            .replace("\${packageName}", packageName)
-
-        Files.createFile(psiDirectory, "${fileName}.admin.view.php", templateContent)
+        Controller.generate(psiDirectory, fileName)
     }
+
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.VIEW)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.CONTROLLER)
         event.presentation.icon = ExtensionIcons.action
     }
 

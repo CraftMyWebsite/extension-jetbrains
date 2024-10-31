@@ -1,6 +1,5 @@
-package fr.craftmywebsite.actions.dialogs.packages.files
+package fr.craftmywebsite.actions.dialogs.packages.files.model
 
-import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -9,10 +8,8 @@ import com.intellij.psi.PsiManager
 import fr.craftmywebsite.icons.ExtensionIcons
 import fr.craftmywebsite.types.PackageTypes
 import fr.craftmywebsite.utils.Files
-import fr.craftmywebsite.utils.Packages
-import fr.craftmywebsite.utils.Templates
 
-class EventDialog : AnAction() {
+class ModelDialog : AnAction() {
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
@@ -21,29 +18,20 @@ class EventDialog : AnAction() {
         val view = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE) ?: return
         val psiDirectory = PsiManager.getInstance(project).findDirectory(view) ?: return
 
-        var fileName = Messages.showInputDialog(
+        val fileName = Messages.showInputDialog(
             project,
-            "Enter the event name:",
-            "New Event",
+            "Enter the model name:",
+            "New Model",
             Messages.getQuestionIcon()
-        )?.capitalize() ?: return
+        ) ?: return
 
-        fileName = if (fileName.endsWith("Event")) fileName else "${fileName}Event"
-
-        val packageName = Packages.findPackageName(psiDirectory)
-        val namespace = Packages.buildNamespace(psiDirectory, PackageTypes.EVENT)
-
-        val templateContent = Templates.getTemplateFile("/templates/files/event.php.template")
-            .replace("\${eventName}", fileName)
-            .replace("\${namespace}", namespace)
-            .replace("\${packageName}", packageName)
-
-        Files.createFile(psiDirectory, "${fileName}.php", templateContent)
+        Model.generate(psiDirectory, fileName)
     }
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.EVENT)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.MODEL)
         event.presentation.icon = ExtensionIcons.action
     }
+
 }

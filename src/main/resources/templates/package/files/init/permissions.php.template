@@ -1,0 +1,25 @@
+<?php
+
+namespace CMW\Permissions\${packageName};
+
+use CMW\Manager\Lang\LangManager;
+use CMW\Manager\Permission\IPermissionInit;
+use CMW\Manager\Permission\PermissionInitType;
+
+/**
+ * Class: Permissions
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/initialisation-init
+ */
+class Permissions implements IPermissionInit
+{
+    public function permissions(): array
+    {
+        return [
+            new PermissionInitType(
+                code: '${packageNameLower}.manage',
+                description: LangManager::translate('${packageNameLower}.permissions.manage'),
+            ),
+        ];
+    }
+}

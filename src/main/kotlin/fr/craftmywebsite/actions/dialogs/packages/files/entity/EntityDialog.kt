@@ -1,4 +1,4 @@
-package fr.craftmywebsite.actions.dialogs.packages.files
+package fr.craftmywebsite.actions.dialogs.packages.files.entity
 
 import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
@@ -9,11 +9,14 @@ import com.intellij.psi.PsiManager
 import fr.craftmywebsite.icons.ExtensionIcons
 import fr.craftmywebsite.types.PackageTypes
 import fr.craftmywebsite.utils.Files
-import fr.craftmywebsite.utils.Packages
-import fr.craftmywebsite.utils.Templates
 
 
-class TypeDialog : AnAction() {
+/***
+ * TODO: Add a dialog array with properties.
+ * + Generate constructor and getters.
+ */
+
+class EntityDialog : AnAction() {
 
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
@@ -24,25 +27,17 @@ class TypeDialog : AnAction() {
 
         val fileName = Messages.showInputDialog(
             project,
-            "Enter the type name:",
-            "New Type",
+            "Enter the entity name:",
+            "New Entity",
             Messages.getQuestionIcon()
-        )?.capitalize() ?: return
+        ) ?: return
 
-        val packageName = Packages.findPackageName(psiDirectory)
-        val namespace = Packages.buildNamespace(psiDirectory, PackageTypes.TYPE)
-
-        val templateContent = Templates.getTemplateFile("/templates/files/type.php.template")
-            .replace("\${typeName}", fileName)
-            .replace("\${namespace}", namespace)
-            .replace("\${packageName}", packageName)
-
-        Files.createFile(psiDirectory, "${fileName}.php", templateContent)
+        Entity.generate(psiDirectory, fileName)
     }
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.TYPE)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.ENTITY)
         event.presentation.icon = ExtensionIcons.action
     }
 

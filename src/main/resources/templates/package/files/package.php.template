@@ -1,0 +1,63 @@
+<?php
+
+namespace CMW\Package\${packageName};
+
+use CMW\Manager\Package\IPackageConfig;
+use CMW\Manager\Package\PackageMenuType;
+
+/**
+ * Class: Package
+ * @package ${packageName}
+ * @link https://craftmywebsite.fr/docs/fr/technical/creer-un-package/packagephp
+ */
+class Package implements IPackageConfig
+{
+    public function name(): string
+    {
+        return '${packageName}';
+    }
+
+    public function version(): string
+    {
+        return '${packageVersion}';
+    }
+
+    public function authors(): array
+    {
+        return ['${packageAuthor}'];
+    }
+
+    public function isGame(): bool
+    {
+        return false;
+    }
+
+    public function isCore(): bool
+    {
+        return false;
+    }
+
+    public function menus(): ?array
+    {
+        return [
+            new PackageMenuType(
+                icon: 'fas fa-box',
+                title: '${packageName} Menu',
+                url: '${packageNameLower}',
+                permission: '${packageNameLower}.manage',
+                subMenus: []
+            ),
+        ];
+    }
+
+    public function requiredPackages(): array
+    {
+        return ['Core'];
+    }
+
+    public function uninstall(): bool
+    {
+        // Return true, we don't need other operations for uninstall.
+        return true;
+    }
+}

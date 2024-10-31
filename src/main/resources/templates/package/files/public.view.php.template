@@ -1,0 +1,11 @@
+<?php
+
+use CMW\Utils\Website;
+
+Website::setTitle('${packageName}');
+Website::setDescription('${packageName}');
+?>
+
+<div style="display: block; max-width: 50rem; margin-left: auto; margin-right: auto; margin-top: 50px">
+    <?= "Hello World from ${packageName} !!!" ?>
+</div>

@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS `cmw_${packageNameLower}`
+(
+    `id`   INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL
+) ENGINE = InnoDB
+  CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci;
+
+INSERT INTO `cmw_${packageNameLower}` (`name`)
+VALUES ('CMW Extension Test');

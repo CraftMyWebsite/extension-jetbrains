@@ -20,6 +20,13 @@ object Packages {
         throw IllegalArgumentException("Unable to find 'Package' folder.")
     }
 
+    fun findPackageRootDirectory(project: Project): PsiDirectory? {
+        val virtualFile = project.guessProjectDir()?.findDirectory("App/Package")
+            ?: return null
+
+        return PsiManager.getInstance(project).findDirectory(virtualFile)
+    }
+
     fun findPackageDirectory(name: String, project: Project): PsiDirectory? {
         val virtualFile = project.guessProjectDir()?.findDirectory("App/Package/$name")
             ?: return null

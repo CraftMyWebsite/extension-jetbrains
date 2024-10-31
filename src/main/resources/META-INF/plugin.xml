@@ -50,51 +50,58 @@
 
             <add-to-group group-id="NewGroup" anchor="first"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ControllerDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.ControllerDialog"
+            <!-- Packages Components Creations -->
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.controller.ControllerDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.controller.ControllerDialog"
                     text="Create Controller"
                     description="Creates a new Controller file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ModelDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.ModelDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.model.ModelDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.model.ModelDialog"
                     text="Create Model"
                     description="Creates a new Model file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.EntityDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.EntityDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.entity.EntityDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.entity.EntityDialog"
                     text="Create Entity"
                     description="Creates a new Entity file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.AdminViewDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.AdminViewDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.admin_view.AdminViewDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.admin_view.AdminViewDialog"
                     text="Create Admin View"
                     description="Creates a new Admin View file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.EventDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.EventDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.event.EventDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.event.EventDialog"
                     text="Create Event"
                     description="Creates a new Event file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.TypeDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.TypeDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.type.TypeDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.type.TypeDialog"
                     text="Create Type"
                     description="Creates a new Type file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.InterfaceDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.InterfaceDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.interfaces.InterfaceDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.interfaces.InterfaceDialog"
                     text="Create Interface"
                     description="Creates a new Interface file"/>
 
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ExceptionDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.ExceptionDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.exception.ExceptionDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.exception.ExceptionDialog"
                     text="Create Exception"
                     description="Creates a new Exception file"/>
 
-
-            <action id="fr.craftmywebsite.actions.dialogs.packages.files.ImplementationDialog"
-                    class="fr.craftmywebsite.actions.dialogs.packages.files.ImplementationDialog"
+            <action id="fr.craftmywebsite.actions.dialogs.packages.files.implementation.ImplementationDialog"
+                    class="fr.craftmywebsite.actions.dialogs.packages.files.implementation.ImplementationDialog"
                     text="Create Implementation"
                     description="Creates a new Implementation based on interface"/>
+
+
+            <!-- Create Package -->
+            <action id="fr.craftmywebsite.actions.dialogs.packages.creation.PackageAction"
+                    class="fr.craftmywebsite.actions.dialogs.packages.creation.PackageAction"
+                    text="Create Package"
+                    description="Creates a new package"/>
 
         </group>
     </actions>
