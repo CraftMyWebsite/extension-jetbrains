@@ -137,10 +137,5 @@ class PackageAction : AnAction() {
                 }
             }
         }
-
-        fun isPackageNameExist(packageName: String, project: Project): Boolean {
-            val rootPackageDirectory = Packages.findPackageRootDirectory(project) ?: return false
-            return rootPackageDirectory.findSubdirectory(packageName) != null
-        }
     }
 }

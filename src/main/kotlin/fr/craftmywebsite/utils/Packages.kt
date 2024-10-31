@@ -56,4 +56,9 @@ object Packages {
         if (currentDirectory.name != "Package") throw IllegalArgumentException("Unable to find 'Package' folder.")
         return "CMW\\${type.namespace}\\" + packagePath.asReversed().joinToString("\\")
     }
+
+    fun isPackageNameExist(packageName: String, project: Project): Boolean {
+        val rootPackageDirectory = Packages.findPackageRootDirectory(project) ?: return false
+        return rootPackageDirectory.findSubdirectory(packageName) != null
+    }
 }

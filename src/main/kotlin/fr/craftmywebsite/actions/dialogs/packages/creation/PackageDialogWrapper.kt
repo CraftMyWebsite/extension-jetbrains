@@ -4,6 +4,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.openapi.ui.Messages
 import com.intellij.util.ui.JBUI
+import fr.craftmywebsite.utils.Packages
 import org.jetbrains.annotations.Nullable
 import java.awt.CardLayout
 import java.awt.GridBagConstraints
@@ -82,7 +83,7 @@ class PackageDialogWrapper(private val project: Project) : DialogWrapper(true) {
 
     private fun isPackageNameExist(): Boolean {
         val packageName = packageNameInput.text
-        val isExist = PackageAction.isPackageNameExist(packageName, project)
+        val isExist = Packages.isPackageNameExist(packageName, project)
         if (isExist) {
             nextAction.isEnabled = false
 
