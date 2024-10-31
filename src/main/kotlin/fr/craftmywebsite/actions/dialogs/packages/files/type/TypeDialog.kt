@@ -31,7 +31,7 @@ class TypeDialog : AnAction() {
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.TYPE)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedPackageFolder(virtualFile, PackageTypes.TYPE)
         event.presentation.icon = ExtensionIcons.action
     }
 

@@ -103,6 +103,12 @@
                     text="Create Package"
                     description="Creates a new package"/>
 
+            <!-- Create Manager -->
+            <action id="fr.craftmywebsite.actions.dialogs.managers.creation.ManagerDialog"
+                    class="fr.craftmywebsite.actions.dialogs.managers.creation.ManagerDialog"
+                    text="Create Manager"
+                    description="Creates a new manager"/>
+
         </group>
     </actions>
 

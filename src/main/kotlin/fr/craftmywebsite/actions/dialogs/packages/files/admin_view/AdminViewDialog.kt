@@ -30,7 +30,7 @@ class AdminViewDialog : AnAction() {
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.VIEW)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedPackageFolder(virtualFile, PackageTypes.VIEW)
         event.presentation.icon = ExtensionIcons.action
     }
 

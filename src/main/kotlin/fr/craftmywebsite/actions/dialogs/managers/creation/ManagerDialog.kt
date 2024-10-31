@@ -1,16 +1,15 @@
-package fr.craftmywebsite.actions.dialogs.packages.files.controller
+package fr.craftmywebsite.actions.dialogs.managers.creation
 
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiManager
 import fr.craftmywebsite.icons.ExtensionIcons
-import fr.craftmywebsite.types.PackageTypes
-import fr.craftmywebsite.utils.Files
+import fr.craftmywebsite.utils.Directory
 
-class ControllerDialog : AnAction() {
-
+class ManagerDialog : AnAction() {
     override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 
     override fun actionPerformed(event: AnActionEvent) {
@@ -18,21 +17,37 @@ class ControllerDialog : AnAction() {
         val view = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE) ?: return
         val psiDirectory = PsiManager.getInstance(project).findDirectory(view) ?: return
 
-        val fileName = Messages.showInputDialog(
+        val managerName = Messages.showInputDialog(
             project,
-            "Enter the controller name:",
-            "New Controller",
+            "Enter the Manager name:",
+            "New Manager",
             Messages.getQuestionIcon()
         ) ?: return
 
-        Controller.generate(psiDirectory, fileName)
+        Directory.createDirectory(psiDirectory, managerName)
+
+        val managerDirectory = psiDirectory.findSubdirectory(managerName) ?: return
+
+        Manager.generateFile(managerDirectory, managerName)
     }
 
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedPackageFolder(virtualFile, PackageTypes.CONTROLLER)
+        event.presentation.isEnabledAndVisible = isInAllowedFolder(virtualFile)
         event.presentation.icon = ExtensionIcons.action
     }
 
+    private fun isInAllowedFolder(virtualFile: VirtualFile?): Boolean {
+        if (virtualFile == null || !virtualFile.isDirectory) return false
+
+        var currentDirectory = virtualFile
+
+        while (currentDirectory != null) {
+            if (currentDirectory.name == "Manager") return true
+            currentDirectory = currentDirectory.parent
+        }
+
+        return false
+    }
 }

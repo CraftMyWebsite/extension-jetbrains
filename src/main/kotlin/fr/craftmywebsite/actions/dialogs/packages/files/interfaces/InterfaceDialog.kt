@@ -1,6 +1,5 @@
 package fr.craftmywebsite.actions.dialogs.packages.files.interfaces
 
-import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -32,7 +31,7 @@ class InterfaceDialog : AnAction() {
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.INTERFACE)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedPackageFolder(virtualFile, PackageTypes.INTERFACE)
         event.presentation.icon = ExtensionIcons.action
     }
 

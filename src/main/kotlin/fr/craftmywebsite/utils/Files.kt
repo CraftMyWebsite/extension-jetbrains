@@ -15,7 +15,7 @@ class Files {
             }
         }
 
-        fun isInAllowedFolder(virtualFile: VirtualFile?, type: PackageTypes): Boolean {
+        fun isInAllowedPackageFolder(virtualFile: VirtualFile?, type: PackageTypes): Boolean {
             if (virtualFile == null || !virtualFile.isDirectory) return false
 
             var currentDirectory = virtualFile

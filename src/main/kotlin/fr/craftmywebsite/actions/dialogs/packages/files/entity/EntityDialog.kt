@@ -1,6 +1,5 @@
 package fr.craftmywebsite.actions.dialogs.packages.files.entity
 
-import ai.grazie.utils.capitalize
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -37,7 +36,7 @@ class EntityDialog : AnAction() {
 
     override fun update(event: AnActionEvent) {
         val virtualFile = event.getData(com.intellij.openapi.actionSystem.CommonDataKeys.VIRTUAL_FILE)
-        event.presentation.isEnabledAndVisible = Files.isInAllowedFolder(virtualFile, PackageTypes.ENTITY)
+        event.presentation.isEnabledAndVisible = Files.isInAllowedPackageFolder(virtualFile, PackageTypes.ENTITY)
         event.presentation.icon = ExtensionIcons.action
     }
 
