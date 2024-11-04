@@ -8,10 +8,14 @@ import com.intellij.psi.PsiManager
 
 class Directory {
     companion object {
-        fun createDirectory(directory: PsiDirectory, directoryName: String) {
+        fun createDirectory(directory: PsiDirectory, directoryName: String): PsiDirectory? {
+            var dir: PsiDirectory? = null
+
             WriteCommandAction.runWriteCommandAction(directory.project) {
-                directory.createSubdirectory(directoryName)
+                dir = directory.createSubdirectory(directoryName)
             }
+
+            return dir
         }
 
         fun getDirectory(file: VirtualFile, project: Project): PsiDirectory? {

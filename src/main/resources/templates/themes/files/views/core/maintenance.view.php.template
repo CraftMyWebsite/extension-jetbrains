@@ -1,0 +1,29 @@
+<?php
+
+use CMW\Utils\Website;
+
+/* @var \CMW\Entity\Core\MaintenanceEntity $maintenance */
+
+Website::setTitle('Maintenance');
+Website::setDescription(Website::getWebsiteName() . ' is in maintenance mode');
+?>
+
+<section class="page-section">
+    <div class="container">
+        <?php if ($maintenance->isEnable()): ?>
+            <div>
+                <h1><?= $maintenance->getTitle() ?></h1>
+            </div>
+
+            <div>
+                <p><?= $maintenance->getDescription() ?></p>
+            </div>
+
+            <hr>
+
+            <div>
+                <h3>End of the maintenance: <?= $maintenance->getTargetDateFormatted() ?></h3>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>

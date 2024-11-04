@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @var $loader \CMW\Manager\Loader\Loader global router
+ */
+
+use CMW\Manager\Loader\Loader;
+
+//TODO Documentation
+
+/* Demo hello idea */
+Loader::createSimpleRoute('/hello-idea', 'Router/demo', 'Core');

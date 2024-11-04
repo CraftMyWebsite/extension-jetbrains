@@ -1,0 +1,15 @@
+<?php
+
+use CMW\Utils\Website;
+
+/* @var $errorCode */
+
+Website::setTitle("Error $errorCode");
+Website::setDescription("Error $errorCode");
+?>
+
+<section class="page-section">
+    <div class="container">
+        <h1>Error <?= $errorCode ?></h1>
+    </div>
+</section>

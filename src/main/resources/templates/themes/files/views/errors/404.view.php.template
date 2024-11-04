@@ -1,0 +1,14 @@
+<?php
+
+use CMW\Utils\Website;
+
+Website::setTitle('Page not found');
+Website::setDescription('Error, page not found.');
+?>
+
+<section class="page-section">
+    <div class="container">
+        <h1>404</h1>
+        Page not found
+    </div>
+</section>

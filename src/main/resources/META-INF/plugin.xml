@@ -109,6 +109,11 @@
                     text="Create Manager"
                     description="Creates a new manager"/>
 
+            <!-- Create Theme -->
+            <action id="fr.craftmywebsite.actions.dialogs.themes.creation.ThemeAction"
+                    class="fr.craftmywebsite.actions.dialogs.themes.creation.ThemeAction"
+                    text="Create Theme"
+                    description="Creates a new theme"/>
         </group>
     </actions>
 

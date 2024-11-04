@@ -40,9 +40,7 @@ class PackageAction : AnAction() {
             //Create package directory
             val rootPackageDirectory = Packages.findPackageRootDirectory(project) ?: return;
 
-            Directory.createDirectory(rootPackageDirectory, model.name)
-
-            val packageDirectory = rootPackageDirectory.findSubdirectory(model.name) ?: return
+            val packageDirectory = Directory.createDirectory(rootPackageDirectory, model.name) ?: return
 
             //Create package init files
             createPackageInitFiles(packageDirectory, model)
@@ -65,8 +63,7 @@ class PackageAction : AnAction() {
             Files.createFile(packageDirectory, "Package.php", templatePackage)
 
             //Generate lang files
-            Directory.createDirectory(packageDirectory, "Lang")
-            val langDirectory = packageDirectory.findSubdirectory("Lang") ?: return
+            val langDirectory = Directory.createDirectory(packageDirectory, "Lang") ?: return
 
             val templateLang = Templates.getTemplateFile("/templates/package/files/lang.php.template")
                 .replace("\${packageName}", model.name)
@@ -76,9 +73,7 @@ class PackageAction : AnAction() {
             Files.createFile(langDirectory, "fr.php", templateLang)
 
             // Folder /Init/ files
-            Directory.createDirectory(packageDirectory, "Init")
-
-            val initDirectory = packageDirectory.findSubdirectory("Init") ?: return
+            val initDirectory = Directory.createDirectory(packageDirectory, "Init") ?: return
 
             //init.sql file
             val templateInitSql = Templates.getTemplateFile("/templates/package/files/init/init.sql.template")
@@ -121,8 +116,7 @@ class PackageAction : AnAction() {
                 "Public" to components.public
             ).forEach { (folderName, shouldCreate) ->
                 if (shouldCreate) {
-                    Directory.createDirectory(packageDirectory, folderName)
-                    val folder = packageDirectory.findSubdirectory(folderName) ?: return
+                    val folder = Directory.createDirectory(packageDirectory, folderName) ?: return
                     when (folderName) {
                         "Views" -> AdminView.generate(folder, "main")
                         "Controllers" -> Controller.generate(folder, packageName)

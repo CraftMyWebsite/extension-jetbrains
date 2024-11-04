@@ -24,9 +24,7 @@ class ManagerDialog : AnAction() {
             Messages.getQuestionIcon()
         ) ?: return
 
-        Directory.createDirectory(psiDirectory, managerName)
-
-        val managerDirectory = psiDirectory.findSubdirectory(managerName) ?: return
+        val managerDirectory = Directory.createDirectory(psiDirectory, managerName) ?: return
 
         Manager.generateFile(managerDirectory, managerName)
     }
