@@ -11,6 +11,7 @@ import fr.craftmywebsite.actions.dialogs.packages.files.entity.Entity
 import fr.craftmywebsite.actions.dialogs.packages.files.event.Event
 import fr.craftmywebsite.actions.dialogs.packages.files.exception.Exception
 import fr.craftmywebsite.actions.dialogs.packages.files.interfaces.Interface
+import fr.craftmywebsite.actions.dialogs.packages.files.model.Model
 import fr.craftmywebsite.actions.dialogs.packages.files.publics.Public
 import fr.craftmywebsite.actions.dialogs.packages.files.type.Type
 import fr.craftmywebsite.icons.ExtensionIcons
@@ -124,7 +125,7 @@ class PackageAction : AnAction() {
                         "Events" -> Event.generate(folder, packageName)
                         "Exceptions" -> Exception.generate(folder, packageName)
                         "Interfaces" -> Interface.generate(folder, packageName)
-                        "Models" -> Interface.generate(folder, packageName)
+                        "Models" -> Model.generate(folder, packageName)
                         "Type" -> Type.generate(folder, packageName)
                         "Public" -> Public.generate(folder, "main")
                     }

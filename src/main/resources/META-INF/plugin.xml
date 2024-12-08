@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>fr.craftmywebsite.extension</id>
-    <name>CraftMyWebsite - IDE Extension</name>
-    <version>1.0.0</version>
+    <name>CraftMyWebsite</name>
+    <version>1.0.1</version>
 
 
     <depends>com.jetbrains.php</depends>
@@ -22,19 +22,20 @@
         </ul>
 
         <h3>Documentation:</h3>
-        <span>Soon...</span>
+        <a href="https://craftmywebsite.fr/docs/fr/technical/outils/extension-jetbrains">CraftMyWebsite Documentation (FR)</a>
 
         <h3>Support:</h3>
         <a href="https://craftmywebsite.fr/discord">CraftMyWebsite Discord</a>
 
         <h3>Contribute:</h3>
-        <span>Soon...</span>
+        <a href="https://github.com/CraftMyWebsite/extension-jetbrains">Github</a>
     ]]>
     </description>
     <change-notes>
         <![CDATA[
       <ul>
         <li><b>1.0.0</b> Release CraftMyWebsite IDE Extension</li>
+        <li><b>1.0.1</b> Fix package generation: Model wrong generation.</li>
       </ul>
     ]]>
     </change-notes>
