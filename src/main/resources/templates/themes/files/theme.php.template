@@ -21,6 +21,11 @@ class Theme implements IThemeConfig
         return "2.0"; //TODO get latest CMW version
     }
 
+    public function imageLink(): ?string
+    {
+        return null;
+}
+
     public function author(): ?string
     {
         return "${themeAuthor}";
