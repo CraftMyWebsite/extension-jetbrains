@@ -45,4 +45,9 @@ class Theme implements IThemeConfig
     {
         return ${themeRequiredPackages};
     }
+
+    public function imageLink(): ?string
+    {
+        return null;
+    }
 }
